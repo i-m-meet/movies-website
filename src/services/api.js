@@ -1,18 +1,18 @@
 const api_key = import.meta.env.VITE_MOVIE_API_KEY;
-const url = 'https://moviesdatabase.p.rapidapi.com/titles';
+const url = 'https://imdb236.p.rapidapi.com/imdb';
 const options = {
 	method: 'GET',
 	headers: {
 		'x-rapidapi-key': api_key,
-		'x-rapidapi-host': 'moviesdatabase.p.rapidapi.com'
+		'x-rapidapi-host': 'imdb236.p.rapidapi.com'
 	}
 };
 
 export const getPopularMovies = async () => {
-    const respone = await fetch(url, options)
+    const respone = await fetch(`${url}/top250-movies`, options)
     const data = await respone.json()
     console.log(data)
-    return data.results
+    return data
     
 };
 
