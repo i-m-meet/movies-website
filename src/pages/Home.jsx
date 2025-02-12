@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <div className="p-6">
       {/* Search Bar */}
-      <form onSubmit={handleSearch} className="mb-6 flex justify-center">
+      <form onSubmit={handleSearch} className="mb-6 flex justify-center items-center">
         <input
           type="text"
           placeholder="Search for movies..."
@@ -59,11 +59,11 @@ const Home = () => {
           Search
         </button>
       </form>
-      {error && <div className="">{error}</div>}
+      {error && <div className="text-red-500 text-center font-semibold">{error}</div>}
 
       {/* Movies Grid */}
       {loading ? (
-        <div className="loading">Loading......</div>
+        <div className="text-center text-xl font-semibold text-gray-700">Loading......</div>
       ) : (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {movies.map((movie) => (

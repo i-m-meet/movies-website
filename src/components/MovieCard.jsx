@@ -1,6 +1,14 @@
+import { useContext, useState } from "react";
+import { useMovieContext } from "../context/MovieContext";
+
 const MovieCard = ({ movie }) => {
-  const onFavoriteClick = () => {
-    alert("clicked");
+  const { isFavorite, addFavorite, removeFavorite } = useMovieContext();
+  const favorite = isFavorite(movie.id);
+
+  const onFavoriteClick = (e) => {
+    e.preventDefault();
+    if (favorite) removeFavorite(movie.id);
+    else addFavorite(movie);
   };
 
   const imageUrl = movie.primaryImage || "https://via.placeholder.com/300x450";
@@ -10,14 +18,14 @@ const MovieCard = ({ movie }) => {
         <img
           src={imageUrl}
           alt={movie.primaryTitle}
-          className="h-60 w-full object-cover"
+          className="h-60 w-full object-cover rounded-t-lg"
         />
         <div className="absolute top-2 right-2">
           <button
-            className="rounded-full bg-white p-2 shadow-md transition duration-300 hover:bg-red-500 hover:text-white"
+            className="rounded-full bg-gray-900 p-2 shadow-md transition duration-300 hover:bg-gray-700 hover:text-white"
             onClick={onFavoriteClick}
           >
-            ❤️
+            {favorite ? "❤️" : "🤍"}
           </button>
         </div>
       </div>
