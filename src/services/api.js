@@ -20,6 +20,6 @@ export const searchMovies = async (query) => {
     `${url}/autocomplete?query=${encodeURIComponent(query).replace("", '+')}`,options
   );
   const data = await response.json();
-  console.log(data)
+  // console.log(data)
   return data;
 };
